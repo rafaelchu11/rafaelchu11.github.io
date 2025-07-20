@@ -4,25 +4,88 @@
   <meta charset="UTF-8" />
   <title>Rafael Chu's Website</title>
   <style>
+    :root {
+      --bg-color: #f0f0f0;
+      --text-color: #333;
+      --accent-color: #3498db;
+    }
     body {
       font-family: sans-serif;
       text-align: center;
-      margin-top: 20%;
-      background-color: #f0f0f0;
+      margin: 0;
+      padding-top: 80px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--accent-color);
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
     }
     h1 {
-      color: #3498db;
       font-size: 48px;
     }
     p {
-      color: #333;
       font-size: 20px;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #2179b5;
+    }
+    .toggle-theme {
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 20px;
+      background: none;
+      border: none;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Hello, World! 👋</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Night Mode</button>
+  </nav>
+  <h1>Hello, World! ��</h1>
   <p>Welcome to my personal website.</p>
-  <p>Last updated at: 2025-07-19 23:00</p>
+  <p>Last updated at: 2025-07-19 23:15</p>
+  <a class="button" href="https://github.com/rafaelchu11" target="_blank">Visit my GitHub</a>
+
+  <script>
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentBg = getComputedStyle(root).getPropertyValue('--bg-color').trim();
+      if (currentBg === '#f0f0f0') {
+        root.style.setProperty('--bg-color', '#1a1a1a');
+        root.style.setProperty('--text-color', '#f0f0f0');
+        root.style.setProperty('--accent-color', '#4db8ff');
+      } else {
+        root.style.setProperty('--bg-color', '#f0f0f0');
+        root.style.setProperty('--text-color', '#333');
+        root.style.setProperty('--accent-color', '#3498db');
+      }
+    }
+  </script>
 </body>
 </html>
